@@ -1,0 +1,82 @@
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+<div class="container">
+
+	<div class="row justify-content-center">
+                        <div class="col-12 col-md-10 col-lg-8">
+                            <form class="card card-sm">
+                                <div class="card-body row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <i class="fas fa-search h4 text-body"></i>
+                                    </div>
+                                    <!--end of col-->
+                                    <div class="col">
+                                        <input class="form-control form-control-lg form-control-borderless" type="text"
+                                        placeholder="Search Product" name="productName" [(ngModel)]="productName"
+                                        (ngModelChange)="Search()">
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <!--end of col-->
+                    </div>
+</div>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div style="margin-left: 40px;">
+      <h5> Sort-By </h5>
+    </div>
+    &nbsp;  &nbsp;  &nbsp;&nbsp;
+    <div>
+      <button class="btn " (click)="sortLowToHigh()">
+      Price--Low to High
+    </button>
+    </div>
+    &nbsp;  &nbsp;  &nbsp;&nbsp;
+    <div>
+      <button class="btn" (click)="sortHightoLow()">
+      Price--High to Low
+    </button>
+    </div>
+    &nbsp;  &nbsp;  &nbsp;&nbsp;
+
+  </nav>
+
+<div class="alert alert-danger" role="alert" *ngIf="errorMsg">
+{{errorMsg}}
+</div>
+
+    <div *ngIf="productsEmpty && loggedIn && isMerchant" >
+      <button (click)="deleteCategory(this.categoryId)">Delete category</button>
+    </div>
+
+<div class="listing-section" *ngFor="let p of products">
+
+  <div class="product">
+    <div class="image-box">
+      <div class="images" id="image-1" >
+        <img class="img-thumbnail w-full aspect-square" alt="product image" src={{p.image[0]}} height="100%" width="100%" >
+      </div>
+    </div>
+    <div class="text-box">
+      <h2 class="item">{{p.productName}}</h2>
+      <h3 class="price">{{p.price|currency:"Rs "}}</h3>
+
+      <label for="item-1-quantity"></label>
+
+      <button type="button" name="item-1-button"
+       id="item-1-button" routerLink="/productdetails/{{p.productid}}" >
+       View Product Details</button>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,226 @@
+
+<section class="vh-100" style="background-color: #eee;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+
+                <form class="mx-1 mx-md-4" [formGroup]="registrationForm" (submit)="onPostRegistration()">
+
+
+                  <div class="d-flex flex-row align-items-center mb-6">
+
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example1c">Your Name</label>
+                      <input  type="text" id="form3Example1c" class="form-control"  formControlName="fullName"
+                       />
+
+                      <small *ngIf="registrationForm.get('fullName').invalid &&
+                      registrationForm.get('fullName').touched" class="text-danger">Name Required</small>
+
+                  </div>
+
+&nbsp;&nbsp;
+<!--
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example1c">Your role</label>
+                      <input type="text" id="form3Example1c" class="form-control"  formControlName="role" />
+
+                      <small *ngIf="registrationForm.get('role').invalid &&
+                      registrationForm.get('role').touched" class="text-danger">Role Required</small>
+                    </div>
+                     -->
+                  </div>
+
+<!--
+                  <div class="d-flex flex-row align-items-center mb-4">
+
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example1c">Your gender</label>
+                      <input type="text" id="form3Example1c" class="form-control" formControlName="gender" />
+                      <small *ngIf="registrationForm.get('gender').invalid &&
+                      registrationForm.get('gender').touched" class="text-danger">Gender Required</small>
+                    </div>
+                  </div>
+ -->
+
+                  <label for="">Gender: </label>&nbsp;&nbsp;
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Male" formControlName="gender">
+                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Female" formControlName="gender">
+                    <label class="form-check-label" for="inlineRadio2">Female</label>
+                  </div>
+<br><br>
+
+                  &nbsp;&nbsp;&nbsp;
+                  <label for="">Role: </label>&nbsp;&nbsp;
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="role" id="inlineRadio3" value="Customer" formControlName="role">
+                    <label class="form-check-label" for="inlineRadio3">Customer</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="role" id="inlineRadio4" value="Merchant" formControlName="role">
+                    <label class="form-check-label" for="inlineRadio4">Merchant</label>
+                  </div>
+                  <small *ngIf="registrationForm.get('role').invalid &&
+                      registrationForm.get('role').touched" class="text-danger">Role Required</small>
+                  <br><br>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example1c">Your Mobile Number</label>
+                      <input type="number" id="form3Example1c" class="form-control" formControlName="mobileNo" />
+
+                      <small *ngIf="registrationForm.get('mobileNo').invalid &&
+                      registrationForm.get('mobileNo').touched" class="text-danger">Mobile number Required</small> &nbsp;
+                      <small class="text-danger" *ngIf="registrationForm.get('mobileNo').errors && registrationForm.get('mobileNo').touched ">Enter 10 digit Number</small>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                  <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example3c">Your Email</label>
+                      <input type="email" id="form3Example3c" class="form-control" formControlName="email"/>
+                      <small *ngIf="registrationForm.get('email').invalid &&
+                      registrationForm.get('email').touched" class="text-danger">Email Required</small> &nbsp;
+                      <small class="text-danger" *ngIf="registrationForm.get('email').errors && registrationForm.get('email').touched ">Enter valid email</small>
+
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example1c">Your Username</label>
+                      <input type="text" id="form3Example1c" class="form-control" formControlName="userName"/>
+                      <small *ngIf="registrationForm.get('userName').invalid &&
+                      registrationForm.get('userName').touched" class="text-danger">Username Required</small>
+                    </div>
+                  </div>
+
+
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example4c">Password</label>
+                      <input type="password" id="form3Example4c" class="form-control" formControlName="password"/>
+                      <small *ngIf="registrationForm.get('password').invalid &&
+                      registrationForm.get('password').touched" class="text-danger">Password Required</small>
+                    </div>
+                  </div>
+
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example4cd">enter date of birth</label>
+                      <input type="date" id="form3Example4cd" class="form-control"  formControlName="dateOfBirth" />
+                      <small *ngIf="registrationForm.get('dateOfBirth').invalid &&
+                      registrationForm.get('dateOfBirth').touched" class="text-danger">Date of birth Required</small>
+                    </div>
+                  </div>
+
+                  <form class="mx-1 mx-md-4" [formGroup]="addressForm" (submit)="onPostRegistration()">
+
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4cd">enter house number</label>
+                        <input type="number" id="form3Example4cd" class="form-control"  formControlName="houseNumber" />
+                        <small *ngIf="addressForm.get('houseNumber').invalid &&
+                     addressForm.get('houseNumber').touched" class="text-danger">House Number Required</small>
+                      </div>
+                    </div>
+
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4cd">enter street name</label>
+                        <input type="text" id="form3Example4cd" class="form-control"  formControlName="streetName" />
+                        <small *ngIf="addressForm.get('streetName').invalid &&
+                        addressForm.get('streetName').touched" class="text-danger">Street Name Required</small>
+                      </div>
+                    </div>
+
+
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4cd">enter colony name</label>
+                        <input type="text" id="form3Example4cd" class="form-control"  formControlName="colonyName" />
+                        <small *ngIf="addressForm.get('colonyName').invalid &&
+                        addressForm.get('colonyName').touched" class="text-danger">Colony Name Required</small>
+                      </div>
+                    </div>
+
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4cd">enter city</label>
+                        <input type="text" id="form3Example4cd" class="form-control"  formControlName="city" />
+                        <small *ngIf="addressForm.get('city').invalid &&
+                        addressForm.get('city').touched" class="text-danger">City Name Required</small>
+                      </div>
+                    </div>
+
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4cd">enter state</label>
+                        <input type="text" id="form3Example4cd" class="form-control"  formControlName="state" />
+                        <small *ngIf="addressForm.get('state').invalid &&
+                        addressForm.get('state').touched" class="text-danger">State Name Required</small>
+                      </div>
+                    </div>
+
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4cd">enter pincode</label>
+                        <input type="number" id="form3Example4cd" class="form-control"  formControlName="pinCode" />
+                        <small *ngIf="addressForm.get('pinCode').invalid &&
+                        addressForm.get('pinCode').touched" class="text-danger">pin code Required</small>
+                      </div>
+                    </div>
+
+
+                  </form>
+
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <button [disabled]="registrationForm.invalid" [disabled]="addressForm.invalid" type="button" class="btn btn-primary btn-lg"><input type="submit" value="Register"></button>
+                  </div>
+
+                </form>
+
+
+
+
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                <img src="https://img.freepik.com/free-vector/sign-up-concept-illustration_114360-7885.jpg?w=2000" class="img-fluid" alt="Sample image">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

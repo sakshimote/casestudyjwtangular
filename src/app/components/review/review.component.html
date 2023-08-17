@@ -1,0 +1,120 @@
+
+
+<div class="row" style="margin-top: 1%;">
+  <div class="col-sm-2">
+
+<div class="col-md-12">
+  <a href="Javascript.void(0)" (click)="filterReview(5)"  routerLink="/review/{{pid}}">
+    <img src="../../../assets/imgs/5Star.png" style="width:65%"></a>&nbsp;&nbsp;<span class="star">({{this.starNums[0]}})</span>
+    <br/>
+    <a href="Javascript.void(0)" (click)="filterReview(4)"  routerLink="/review/{{pid}}">
+    <img src="../../../assets/imgs/4star.png" style="width:65%"></a>&nbsp;&nbsp;<span class="star">({{this.starNums[1]}})</span>
+    <br/>
+    <a href="Javascript.void(0)" (click)="filterReview(3)"  routerLink="/review/{{pid}}">
+    <img src="../../../assets/imgs/3star.png" style="width:65%"></a>&nbsp;&nbsp;<span class="star">({{this.starNums[2]}})</span>
+    <br/>
+    <a href="Javascript.void(0)" (click)="filterReview(2)"  routerLink="/review/{{pid}}">
+    <img src="../../../assets/imgs/2Star.png" style="width:65%"></a>&nbsp;&nbsp;<span class="star">({{this.starNums[3]}})</span>
+    <br/>
+    <a href="Javascript.void(0)" (click)="filterReview(1)"  routerLink="/review/{{pid}}">
+    <img src="../../../assets/imgs/1star.png" style="width:65%"></a>&nbsp;&nbsp;<span class="star">({{this.starNums[4]}})</span>
+
+</div>
+
+<div class="row mt-3">
+  <div class="col=md-12" align="center">
+    <button class="btn btn-success" (click)="showAllReviews()">All Reviews</button>
+</div>
+<br>
+<br>
+<div class="col=md-12" align="center">
+  <button class="btn btn-success" (click)="postReview()">Post Review</button>
+</div>
+</div>
+</div>
+<div class="col-md-10">
+<!--
+  <div class="row" *ngIf="showReviewForm">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          Review Form
+        </div>
+        <div class="card-body">
+          <form [formGroup]="reviewForm" (submit)="onPostReview()">
+           <label for="exampleFormControlTextarea1" class="form-label">Please write review about the product</label>
+           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="reviewText"></textarea>
+            <br><label>Rating({{reviewForm.value.rating}}):</label> <br> 1
+           <input type="range" step="1" min="1" max="5"  formControlName="rating"> 5
+          <br/><br/>
+          <input type="submit" value="Post Review">
+        </form>
+          </div>
+      </div>
+    </div>
+  </div>
+-->
+
+  <div  *ngIf="showReviewForm">
+  <script src="https://use.fontawesome.com/a6f0361695.js"></script>
+
+<h2 id="fh2">WE APPRECIATE YOUR REVIEW!</h2>
+<h6 id="fh6">Your review will help us to improve.</h6>
+
+
+<form [formGroup]="reviewForm" (submit)="onPostReview()">
+
+ <div class="pinfo">Rate our product</div>
+
+<div class="form-group" >
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="fa fa-heart"></i></span>
+  <label>Rating({{reviewForm.value.rating}})</label><br>
+ <br><input type="range" step="1" min="1" max="5"  formControlName="rating">
+ <br>
+
+    </div>
+  </div>
+</div>
+
+ <div class="pinfo">Write your feedback.</div>
+
+<div class="form-group">
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+  <textarea class="form-control" id="review" rows="3" formControlName="reviewText"></textarea>
+
+    </div>
+  </div>
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+</div>
+
+<div class="col-lg-4" align="center">
+  {{product.productName}}
+  <img class="img-thumbnail w-full aspect-square" alt="product image" src={{product.image[0]}} height="100%" width="100%">
+</div>
+<br>
+  <div class="row">
+    <div class="col-lg-8" *ngFor="let r of reviewArray">
+      {{r.reviewText}}
+      <br/>
+      Rating: {{r.rating}}
+      <br/>
+      <span *ngIf="r?.userName">Posted By: {{r.userName}}</span>
+      <br/>
+      <button class="btn btn-danger btn-sm" *ngIf="r.userName===username" (click)="onReviewDelete(r.reviewId)" >Delete</button>
+      <hr/>
+    </div>
+
+
+  </div>
+
+</div>
+</div>
+
+

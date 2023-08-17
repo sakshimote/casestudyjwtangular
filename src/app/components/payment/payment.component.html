@@ -1,0 +1,43 @@
+
+
+<div class="col-md-12">
+  <div class="card card-container">
+
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"> </script>
+          <div class="form-group">
+              <div class="alert alert-danger" role="alert" *ngIf="error">Payment failed: {{ error }}</div>
+              <div class="alert alert-success" role="alert" *ngIf="paymentId">Payment Success. Payment ID: {{ paymentId }}</div>
+          </div>
+          <div class="form-group">
+              <label for="name">Name</label> <input type="text" class="form-control" name="fullName" [(ngModel)]="form.fullName" required minlength="3" maxlength="20" #fullName="ngModel" />
+              <div class="alert-danger" *ngIf="f.submitted && fullName.invalid">
+                  <div *ngIf="fullName?.errors?.['required']">Name is required</div>
+                  <div *ngIf="fullName?.errors?.['minlength']">Name must be at least 3 characters</div>
+                  <div *ngIf="fullName?.errors?.['maxlength']">Name must be at most 20 characters</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="email">Email</label> <input type="text" class="form-control" name="email" [(ngModel)]="form.email" required #email="ngModel" />
+              <div class="alert alert-danger" role="alert" *ngIf="f.submitted && email.invalid">Email is required!</div>
+          </div>
+          <div class="form-group">
+              <label for="phone">Phone</label> <input type="number" class="form-control" name="mobileNo" [(ngModel)]="form.mobileNo" required minlength="10" maxlength="10"
+                  #mobileNo="ngModel" />
+              <div class="alert alert-danger" role="alert" *ngIf="f.submitted && mobileNo.invalid">
+                  <div *ngIf="mobileNo?.errors?.['required']">Phone is required</div>
+                  <div *ngIf="mobileNo?.errors?.['minlength'] || mobileNo?.errors?.['maxlength']">Phone must be 10 digits</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="amount">Amount</label> <input type="number" class="form-control" name="amountPaid" [(ngModel)]="form.amountPaid" required #amountPaid="ngModel" />
+              <div class="alert alert-danger" role="alert" *ngIf="f.submitted && amountPaid.invalid">
+                  <div *ngIf="amountPaid?.errors?.['required']">Amount is required</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <button class="btn btn-primary btn-block">Pay</button>
+          </div>
+      </form>
+  </div>
+</div>

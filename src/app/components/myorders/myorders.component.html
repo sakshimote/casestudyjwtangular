@@ -1,0 +1,50 @@
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+<div class="container bootdey">
+    <div class="panel panel-default panel-order">
+        <div class="panel-heading" style="font-size: x-large;">
+            <strong>Order history</strong>
+
+        </div>
+
+
+        <div class="panel-body"*ngFor="let o of order|paginate:{
+          itemsPerPage:1,
+          currentPage: p2
+        }">
+
+            <div class="row" *ngFor="let i of o.items">
+                <div class="col-md-1"><img src="{{i.productImage[0]}}" class="media-object img-thumbnail" /></div>
+                <div class="col-md-11">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-right"></div>
+                            <span><strong>{{ i.productName }}</strong></span><br>
+                            Quantity:{{ i.quantity }}
+                            <br> Product Price:
+                            {{ i.productPrice| currency: "Rs. " }} <br />
+                            <span>Delivery Address:-</span> {{ o.address.houseNumber }},&nbsp;
+                            {{ o.address.colonyName }},&nbsp;{{
+                              o.address.streetName
+                            }},&nbsp;{{ o.address.city }},&nbsp;
+                            {{ o.address.state }},&nbsp;{{ o.address.pinCode }}
+                            <br />
+                            Mode of Payment: {{ o.modeOfPayment }}
+                            <br>
+                            Order status: {{ o.orderStatus }}
+
+
+
+                        </div>
+                        <div class="col-md-12">order made on: {{ o.orderDate }}</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <pagination-controls (pageChange)="p2=$event" ></pagination-controls>
+    </div>
+

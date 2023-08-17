@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="navbar.component.css">
+</head>
+<body>
+
+    <div class="main-navbar shadow-sm sticky-top">
+        <div class="top-navbar">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
+
+                        <a  routerLink="/"><img src="https://play-lh.googleusercontent.com/TORRkFLhSd7_q8WmKR4oQ_Yi7IzbtJ_b28d5UCmPr8j9JKGtO72HXYYIPT182o_GfKhf" alt="Shopy icon" style="width:52px;height:52px;"></a>
+                    </div>
+
+                    <div class="col-md-5 my-auto">
+                      <ul class="nav justify-content-end">
+                      <li class="nav-item" >
+                        <a class="nav-link" href="#" *ngIf="loggedIn"
+                        routerLink="myorders">
+                            <i class="fa fa-server"></i>My orders
+                        </a>
+                    </li>
+                    <li class="nav-item" >
+                      <a class="nav-link" href="#" *ngIf="loggedIn"
+                      routerLink="/wallet">
+                          <i class="fa fa-google-wallet"></i>Wallet
+                      </a>
+                  </li>
+                      </ul>
+                    </div>
+
+                    <div class="col-md-5 my-auto">
+                        <ul class="nav justify-content-end">
+                          <form class="d-flex">
+
+                            <button  *ngIf="!loggedIn" type="button" class="btn btn-primary"  routerLink="/login">Login</button>&nbsp;
+                            <span *ngIf="loggedIn" style="color: rgb(245, 35, 35); font-size: x-large;" >
+                             Welcome {{username}}
+                              &nbsp;&nbsp;
+                             <button class="btn btn-primary"><a
+                               style="color: white;" href="Javascript.void(0)" (click)="onLogOut()"
+                               routerLink="/">Log out</a>  </button>
+                            </span>
+
+                          </form>
+
+
+                          <li class="nav-item">
+                            <div *ngIf="loggedIn && isMerchant">
+                              <a href="javascript.void(0)" routerLink="/postcategory">
+                                <button class="btn btn-success"  >Post Category</button>
+                              </a>
+                          &nbsp;&nbsp;
+                          </div>
+                        </li>
+
+                        <li class="nav-item">
+                          <div *ngIf="loggedIn && isMerchant">
+                            <a href="javascript.void(0)" routerLink="/postproduct">
+                              <button class="btn btn-success"  >Post Product</button>
+                            </a>
+                        &nbsp;&nbsp;
+                        </div>
+                      </li>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" routerLink="/cart">
+                                    <i class="fa fa-shopping-cart"></i> Cart({{cartItem}})
+                                </a>
+                            </li>
+
+
+                            <li class="nav-item">
+                              <a class="nav-link" href="#" routerLink="/profile">
+                                  <i class="fa fa-user"></i>Profile
+                              </a>
+                          </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand d-block d-sm-block d-md-none d-lg-none" href="#">
+                    Shopy
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/">Home</a>
+                        </li>
+                        <!--
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            All Categories
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                          <li *ngIf="errorMsg">{{errorMsg}}</li>
+                          <li *ngFor="let c of categories"><a class="dropdown-item" >{{c.categoryName}}</a></li>
+
+                        </ul>
+                        </li>
+                         -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
